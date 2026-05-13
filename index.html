@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitFlex - Deploy Any Repository</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="stars"></div>
+        <div class="twinkling"></div>
+        <div class="clouds"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fab fa-git-alt"></i>
+                </div>
+                <h1>Git<span class="highlight">Flex</span></h1>
+            </div>
+            <nav class="nav">
+                <a href="#features" class="nav-link">Возможности</a>
+                <a href="#how-it-works" class="nav-link">Как работает</a>
+                <a href="#examples" class="nav-link">Примеры</a>
+            </nav>
+            <div class="header-actions">
+                <button class="btn btn-outline" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="badge">
+                    <i class="fas fa-bolt"></i>
+                    <span>Мгновенный деплой без сервера</span>
+                </div>
+                <h2 class="hero-title">
+                    Деплой любых сайтов<br>
+                    <span class="gradient-text">за секунды</span>
+                </h2>
+                <p class="hero-subtitle">
+                    Вставьте ссылку на репозиторий GitHub, GitLab, Bitbucket или любой другой Git-платформы.<br>
+                    Мы загрузим всё через raw и отобразим как полноценный сайт.
+                </p>
+
+                <!-- Main Input -->
+                <div class="deploy-input-container">
+                    <form id="deployForm" class="deploy-form">
+                        <div class="input-wrapper">
+                            <i class="fab fa-github input-icon"></i>
+                            <input 
+                                type="url" 
+                                id="repoUrl" 
+                                placeholder="https://github.com/user/repository" 
+                                required
+                                autocomplete="off"
+                            >
+                            <button type="submit" class="btn btn-primary btn-deploy">
+                                <i class="fas fa-rocket"></i>
+                                <span>Задеплоить</span>
+                            </button>
+                        </div>
+                        <div class="platform-hints">
+                            <span class="hint"><i class="fab fa-github"></i> GitHub</span>
+                            <span class="hint"><i class="fab fa-gitlab"></i> GitLab</span>
+                            <span class="hint"><i class="fab fa-bitbucket"></i> Bitbucket</span>
+                            <span class="hint"><i class="fas fa-code-branch"></i> Любая платформа</span>
+                        </div>
+                    </form>
+
+                    <!-- Loading State -->
+                    <div class="loading-state" id="loadingState" style="display: none;">
+                        <div class="loader">
+                            <div class="loader-ring"></div>
+                            <div class="loader-ring"></div>
+                            <div class="loader-ring"></div>
+                        </div>
+                        <p class="loading-text">Загрузка репозитория...</p>
+                        <div class="loading-progress">
+                            <div class="progress-bar"></div>
+                        </div>
+                    </div>
+
+                    <!-- Error State -->
+                    <div class="error-state" id="errorState" style="display: none;">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p id="errorMessage"></p>
+                        <button class="btn btn-outline btn-sm" onclick="closeError()">Закрыть</button>
+                    </div>
+                </div>
+
+                <!-- Stats -->
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number">∞</div>
+                        <div class="stat-label">Репозиториев</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">0.5s</div>
+                        <div class="stat-label">Среднее время</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Бесплатно</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Floating Elements -->
+            <div class="floating-elements">
+                <div class="float-item float-1"><i class="fab fa-html5"></i></div>
+                <div class="float-item float-2"><i class="fab fa-css3-alt"></i></div>
+                <div class="float-item float-3"><i class="fab fa-js"></i></div>
+                <div class="float-item float-4"><i class="fab fa-react"></i></div>
+                <div class="float-item float-5"><i class="fab fa-vuejs"></i></div>
+                <div class="float-item float-6"><i class="fab fa-angular"></i></div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features" id="features">
+            <h3 class="section-title">Почему GitFlex?</h3>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h4>Молниеносно</h4>
+                    <p>Загрузка через raw CDN обеспечивает максимальную скорость</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4>Безопасно</h4>
+                    <p>Никакого сервера - всё работает в вашем браузере</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h4>Универсально</h4>
+                    <p>Поддержка всех Git-платформ и языков программирования</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h4>Адаптивно</h4>
+                    <p>Идеально работает на любых устройствах</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h4>Любой код</h4>
+                    <p>HTML, CSS, JS, React, Vue, Angular - всё работает</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h4>Авто-обновление</h4>
+                    <p>Изменения в репозитории сразу видны на сайте</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="how-it-works" id="how-it-works">
+            <h3 class="section-title">Как это работает</h3>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Вставьте ссылку</h4>
+                        <p>Скопируйте URL вашего репозитория с GitHub, GitLab или другой платформы</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Нажмите Задеплоить</h4>
+                        <p>Наша система автоматически определит структуру и загрузит файлы через raw</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Получите результат</h4>
+                        <p>Ваш сайт мгновенно отобразится в iframe с полным функционалом</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Examples -->
+        <section class="examples" id="examples">
+            <h3 class="section-title">Примеры репозиториев</h3>
+            <div class="examples-grid">
+                <div class="example-card" data-url="https://github.com/twbs/bootstrap">
+                    <i class="fab fa-bootstrap"></i>
+                    <span>Bootstrap Demo</span>
+                </div>
+                <div class="example-card" data-url="https://github.com/vuejs/vue">
+                    <i class="fab fa-vuejs"></i>
+                    <span>Vue.js Example</span>
+                </div>
+                <div class="example-card" data-url="https://github.com/facebook/react">
+                    <i class="fab fa-react"></i>
+                    <span>React App</span>
+                </div>
+                <div class="example-card" data-url="https://github.com/tailwindcss/tailwindcss">
+                    <i class="fas fa-wind"></i>
+                    <span>Tailwind CSS</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Preview Area (Hidden by default) -->
+        <section class="preview-section" id="previewSection" style="display: none;">
+            <div class="preview-header">
+                <div class="preview-info">
+                    <h3 id="previewTitle">Предпросмотр</h3>
+                    <p id="previewRepo"></p>
+                </div>
+                <div class="preview-actions">
+                    <button class="btn btn-outline btn-sm" id="refreshBtn">
+                        <i class="fas fa-redo"></i>
+                        Обновить
+                    </button>
+                    <button class="btn btn-outline btn-sm" id="openNewTabBtn">
+                        <i class="fas fa-external-link-alt"></i>
+                        Открыть в новой вкладке
+                    </button>
+                    <button class="btn btn-danger btn-sm" id="closePreviewBtn">
+                        <i class="fas fa-times"></i>
+                        Закрыть
+                    </button>
+                </div>
+            </div>
+            <div class="preview-container">
+                <iframe id="previewFrame" src="about:blank" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals"></iframe>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <div class="footer-logo">
+                        <i class="fab fa-git-alt"></i>
+                        <span>Git<span class="highlight">Flex</span></span>
+                    </div>
+                    <p class="footer-tagline">Деплой будущего уже здесь</p>
+                </div>
+                <div class="footer-center">
+                    <div class="footer-links">
+                        <a href="#features">Возможности</a>
+                        <a href="#how-it-works">Как работает</a>
+                        <a href="#examples">Примеры</a>
+                    </div>
+                </div>
+                <div class="footer-right">
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="love-note">
+                    <i class="fas fa-heart heartbeat"></i>
+                    Сделано с любовью <span class="company">TOO Oink Tech Ltd Co</span>
+                </p>
+                <p class="copyright">&copy; 2024 GitFlex. Все права защищены.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="modal-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Успешно!</h3>
+            <p>Репозиторий загружен и готов к просмотру</p>
+            <button class="btn btn-primary" onclick="closeModal()">Отлично</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
