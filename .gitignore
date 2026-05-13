@@ -1,57 +1,66 @@
-```
-# Unity specific
-Library/
-Temp/
-Obj/
-Build/
-Builds/
-*.unityproj
-*.sln
-*.user
-*.userprefs
-*.pidb
-*.booproj
-*.csproj
-*.meta
-!Assets/Scenes/*.unity.meta
-!Assets/Scripts/**/*.cs.meta
+# Compiled and binary files
+*.pyc
+*.class
+*.o
+*.exe
+*.dll
+*.so
+*.a
+*.obj
+*.out
 
-# Build results
-[Bb]uild/
-[Bb]uilds/
-[Ll]ocal[Cc]ache/
-[Rr]esults/
+# Dependencies
+node_modules/
+venv/
+.venv/
+__pycache__/
+dist/
+build/
+target/
+.gradle/
+.mypy_cache/
+.pytest_cache/
 
-# Unity packages
-Packages/*
-
-# Visual Studio
-*.suo
-*.user
-*.userosscache
-*.sln.docstates
-
-# Visual Studio Code
+# Editor/IDE files
 .vscode/
-
-# Rider
 .idea/
+*.swp
+*.swo
+*.tmp
 
-# Environment
+# System/Environment files
+.DS_Store
+Thumbs.db
 .env
 .env.local
 *.env.*
 
-# Logs
+# Logs and coverage
 *.log
-crashlytics-build.properties
+coverage/
+htmlcov/
+.coverage
 
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-```
+# Compressed files
+*.zip
+*.gz
+*.tar
+*.tgz
+*.bz2
+*.xz
+*.7z
+*.rar
+*.zst
+*.lz4
+*.lzh
+*.cab
+*.arj
+*.rpm
+*.deb
+*.Z
+*.lz
+*.lzo
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst
